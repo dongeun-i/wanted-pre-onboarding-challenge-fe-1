@@ -6,6 +6,7 @@ export type InputPropsType = {
     value?: string;
     onChange: (v: any) => void;
     placeholder?: string;
+    radius?: number | string;
 };
 
 export const InputComponent: React.FunctionComponent<InputPropsType> = (
@@ -19,8 +20,24 @@ export const InputComponent: React.FunctionComponent<InputPropsType> = (
                 props.onChange(e);
             }}
             placeholder={props.placeholder}
+            radius={props.radius}
         />
     );
 };
 
-const Input = styled.input``;
+type StyledProps = {
+    radius?: number | string;
+};
+
+const Input = styled.input`
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    width: 100%;
+    background-color: #fff;
+    border-radius: ${(props: StyledProps) =>
+        typeof props.radius == "string" ? props.radius : `${props.radius}px`};
+    &:focus-visible {
+        border: 3px solid #0090f8;
+        outline: none;
+    }
+`;
