@@ -1,5 +1,4 @@
-# wanted-pre-onboarding-challenge-fe-1 (원티드 사전과제)
-
+# 원티드 사전과제
 > 안녕하세요 1년차 프론트엔드 엔지니어 dongeun-i 라고 합니다.
 
 
