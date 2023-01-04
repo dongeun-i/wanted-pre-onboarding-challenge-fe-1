@@ -11,17 +11,34 @@ import {
 const LoginPage = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState<string>("");
+    const [isCheckEamil, setIsCheckEamil] = useState<boolean>(false);
     const [password, setPassword] = useState<string>("");
+    const [isCheckPassword, setIsCheckPassword] = useState<boolean>(false);
     const [disabled, setDisabled] = useState<boolean>(true);
 
     useEffect(() => {
         if (/(?=.*@)(?=.*\.)/.test(email) && password.length > 7) {
-            setDisabled(false);
+            setIsCheckEamil(true);
         } else {
-            setDisabled(true);
+            setIsCheckEamil(false);
         }
-    }, [email, password]);
+    }, [email]);
 
+    useEffect(() => {
+        if (password.length > 7) {
+            setIsCheckPassword(true);
+        } else {
+            setIsCheckPassword(false);
+        }
+    }, [password]);
+
+    useEffect(() => {
+        if (isCheckPassword && isCheckPassword) {
+            setDisabled(true);
+        } else {
+            setDisabled(false);
+        }
+    }, [isCheckEamil, isCheckPassword]);
     const onclickLogin = () => {
         console.log("로그인버튼 클릭");
     };
@@ -31,7 +48,7 @@ const LoginPage = () => {
                 <S.FlexRow className="mb">
                     <S.Logo />
                 </S.FlexRow>
-                <S.FlexRow className="mb">
+                <S.FlexRow className="mb w-75">
                     <LabelComponent text="이메일" style={{ width: "150px" }} />
                     <InputComponent
                         type="text"
@@ -43,7 +60,7 @@ const LoginPage = () => {
                         radius={"20px"}
                     />
                 </S.FlexRow>
-                <S.FlexRow className="mb-100">
+                <S.FlexRow className="mb w-75">
                     <LabelComponent
                         text="패스워드"
                         style={{ width: "150px" }}
