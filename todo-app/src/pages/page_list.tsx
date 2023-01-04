@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { Routes, Route } from "react-router-dom";
 
 const LoginPage = lazy(() => import("./login.page"));
+const SignPage = lazy(() => import("./sign.page"));
 
 type pageListType = {
     isLogin: boolean;
@@ -18,6 +19,7 @@ export const PageList = (props: pageListType) => {
     return (
         <Routes>
             <Route path="/login" element={<LoginPage />}></Route>
+            <Route path="/sign" element={<SignPage />}></Route>
         </Routes>
     );
 };
