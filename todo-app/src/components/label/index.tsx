@@ -20,4 +20,5 @@ const Label = styled.label`
     display: inline-block;
     width: ${(props: StyledProps) => props.width};
     min-width: ${(props: StyledProps) => props.minWidth};
+    line-height: 2.5;
 `;
